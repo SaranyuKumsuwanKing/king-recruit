@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Careers — King Living</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0a0a'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' fill='white' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E" />
+    <script>
+      (function () {
+        function ck(n) { return (document.cookie.split('; ').find(function (c) { return c.indexOf(n + '=') === 0; }) || '').split('=')[1] || ''; }
+        var th = ck('kt_theme') || localStorage.getItem('kt-theme') || 'system';
+        var eff = th === 'system' ? (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : th;
+        if (eff !== 'light') document.documentElement.setAttribute('data-theme', eff);
+        document.documentElement.setAttribute('lang', ck('kt_lang') === 'th' ? 'th' : 'en');
+      })();
+    </script>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <div id="apply" class="app-loading">Loading…</div>
+    <script type="module" src="/apply/app.js"></script>
+  </body>
+</html>
