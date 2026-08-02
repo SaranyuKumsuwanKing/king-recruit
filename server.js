@@ -36,24 +36,29 @@ app.get(/^(?!\/api\/).*/, (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(PORT, HOST, () => {
-  const ips = [];
-  for (const iface of Object.values(os.networkInterfaces())) {
-    for (const a of iface || []) {
-      if (a.family === 'IPv4' && !a.internal) ips.push(a.address);
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, HOST, () => {
+    const ips = [];
+    for (const iface of Object.values(os.networkInterfaces())) {
+      for (const a of iface || []) {
+        if (a.family === 'IPv4' && !a.internal) ips.push(a.address);
+      }
     }
-  }
-  const line = '─'.repeat(54);
-  console.log('\n' + line);
-  console.log('  King Recruit is running');
-  console.log(line);
-  console.log(`  On this PC:        http://localhost:${PORT}`);
-  ips.forEach((ip) => console.log(`  On the network:    http://${ip}:${PORT}`));
-  console.log(line);
-  console.log('  First sign-in (administrator / HR):');
-  console.log(`     Username:  ${DEFAULT_ADMIN_USERNAME}`);
-  console.log(`     Password:  ${DEFAULT_ADMIN_PASSWORD}`);
-  console.log('  (You can change it any time from the sidebar.)');
-  console.log(line);
-  console.log('  Press Ctrl+C to stop.\n');
-});
+    const line = '─'.repeat(54);
+    console.log('\n' + line);
+    console.log('  King Recruit is running');
+    console.log(line);
+    console.log(`  On this PC:        http://localhost:${PORT}`);
+    ips.forEach((ip) => console.log(`  On the network:    http://${ip}:${PORT}`));
+    console.log(line);
+    console.log('  First sign-in (administrator / HR):');
+    console.log(`     Username:  ${DEFAULT_ADMIN_USERNAME}`);
+    console.log(`     Password:  ${DEFAULT_ADMIN_PASSWORD}`);
+    console.log('  (You can change it any time from the sidebar.)');
+    console.log(line);
+    console.log('  Press Ctrl+C to stop.\n');
+  });
+}
+
+// Export สำหรับให้ Vercel เรียกใช้งานเป็น Serverless Function
+module.exports = app;

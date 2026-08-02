@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # King Recruit
 
 Recruitment & applicant-tracking app for the King Living factory — built on the same
@@ -143,3 +144,7 @@ The careers intro and PDPA consent text are editable in **Settings → Careers p
 ---
 
 *King Living · Internal use only.*
+=======
+# king-recruit
+KFT Recruit
+>>>>>>> 95b1713c23721e78d063872866d4e1c3162f9655
