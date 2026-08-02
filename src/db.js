@@ -8,7 +8,11 @@
 const fs = require('fs');
 const path = require('path');
 
-const DATA_DIR = path.join(__dirname, '..', 'data');
+// const DATA_DIR = path.join(__dirname, '..', 'data');
+// เช็คว่ารันบน Vercel หรือไม่ ถ้าใช่ให้ใช้ /tmp ซึ่งเป็นที่เดียวที่อนุญาตให้เขียนไฟล์ได้
+const isVercel = process.env.VERCEL === '1';
+const DATA_DIR = isVercel ? '/tmp' : path.join(__dirname, '..', 'data');
+
 const DB_PATH = path.join(DATA_DIR, 'db.json');
 const TMP_PATH = path.join(DATA_DIR, 'db.json.tmp');
 const BAK_PATH = path.join(DATA_DIR, 'db.json.bak');
